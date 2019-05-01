@@ -26,7 +26,7 @@ public class SwaggerConfig {
     }
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("容灾管理系统")//大标题
+                .title("CookMe管理系统")//大标题
                 .description("BookStore Platform's REST API, all the applications could access the Object model data via JSON.")//详细描述
                 .version("1.0")//版本
                 .contact(new Contact("java", "http://qf.com", "123456@qq.com"))//作者
