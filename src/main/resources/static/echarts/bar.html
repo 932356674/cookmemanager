@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/public/libs/jquery.min.js"></script>
+    <script src="/public/plugins/echarts/echarts.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            //1,初始化echarts
+            var myEcharts = echarts.init(document.getElementById("myBarContainner"));
+
+            option = {
+                title: {
+                    text: '果蔬叔集团各部门男女员工统计',
+                    subtext: '2019年3月'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['男', '女']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01]
+                },
+                yAxis: {
+                    type: 'category',
+                    //data: ['巴西','印尼','美国','印度','中国','世界人口(万)']
+                    data:[]
+                },
+                series: [
+                    {
+                        name: '男',
+                        type: 'bar',
+                        //data: [18203, 23489, 29034, 104970, 131744, 630230]
+                        data:[]
+                    },
+                    {
+                        name: '女',
+                        type: 'bar',
+                        //data: [19325, 23438, 31000, 121594, 134141, 681807]
+                        data:[]
+                    }
+                ]
+            };
+
+            $.ajax({
+                url:"/sys/echarts/bar",
+                dataType:"json",
+                success:function (r) {
+                    option.yAxis.data = r.yAxisData;
+                    option.series[0].data = r.series0Data;
+                    option.series[1].data = r.series1Data;
+
+                    //3,设置option渲染图片
+                    myEcharts.setOption(option);
+                }
+                })
+
+
+
+        })
+
+    </script>
+</head>
+<body>
+
+<div style="height: 500px;width: 600px" id="myBarContainner"></div>
+
+
+</body>
+</html>
