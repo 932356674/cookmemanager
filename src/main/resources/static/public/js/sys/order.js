@@ -1,16 +1,15 @@
 $(function(){
     var option = {
-        url: '../sys/user/list',
+        url: '../sys/order/list',
         pagination: true,	//显示分页条
         sidePagination: 'server',//服务器端分页
         showRefresh: true,  //显示刷新按钮
-        search: true,
         toolbar: '#toolbar',
         striped : true,     //设置为true会有隔行变色效果
         //idField: 'menuId',
         columns: [
             {
-                field: 'usId',
+                field: 'orderId',
                 title: '序号',
                 width: 40,
                 formatter: function(value, row, index) {
@@ -20,21 +19,41 @@ $(function(){
                 }
             },
             {checkbox:true},
-            { title: '用户ID', field: 'usId',sortable:true},
-            {title:'用户名', field:'usName'},
-            { title: '密码', field: 'usPassword',formatter:function(value){
-                return '******';
+            { title: '订单号', field: 'orderNum',sortable:true},
+            {title:'买家ID', field:'orderId'},
+            { title: '收货人ID', field: 'conId'},
+            { title: '交易状态', field: 'status', formatter: function(value){
+                    if(value === 0){
+                        return '<span class="label label-primary">进行中</span>';
+                    }
+                    if(value === 1){
+                        return '<span class="label label-success">已完成</span>';
+                    }
+                    if(value === 2){
+                        return '<span class="label label-warning">取消交易</span>';
+                    }
+                    if(value === 3){
+                        return '<span class="label label-info">已结算</span>';
+                    }
                 }},
-            { title: '邮箱', field: 'usEmail'},
-            { title: '手机号', field: 'usMobile'},
-            { title: '性别', field: 'usSex'},
-            { title: '生日', field: 'usBirthday'},
-            { title: '现居住地', field: 'usNowhome'},
-            { title: '工作', field: 'usJob'},
-            { title: '头像', field: 'usHead'},
-            { title: '粉丝数', field: 'usFanscount'},
-            { title: '菜谱数', field: 'usBookcount'},
-            { title: '创建时间', field: 'usCreatedate'}
+            { title: '支付状态', field: 'payStatus', formatter: function(value){
+                    if(value === 4){
+                        return '<span class="label label-primary">线下付款已收款</span>';
+                    }
+                    if(value === 1){
+                        return '<span class="label label-danger">未付款</span>';
+                    }
+                    if(value === 2){
+                        return '<span class="label label-success">已付款</span>';
+                    }
+                    if(value === 3){
+                        return '<span class="label label-info">线下付款</span>';
+                    }
+                }},
+            { title: '订单金额', field: 'amount'},
+            { title: '交易订单号', field: 'tradeNum'},
+            { title: '订单创建时间', field: 'createDate'},
+            { title: '订单附言', field: 'remark'}
         ]};
     $('#table').bootstrapTable(option);
 });
@@ -50,7 +69,7 @@ var vm = new Vue({
     methods:{
 	    exportExcel:function(){
 	        console.log("导出！")
-            location.href="http://127.0.0.1:8081/exportExcel";
+            location.href="http://127.0.0.1:8081/exportExcel1";
         },
         del: function(){
             var rows = getSelectedRows();
@@ -129,6 +148,5 @@ var vm = new Vue({
             vm.showList = true;
             $("#table").bootstrapTable('refresh');
         }
-
     }
 });

@@ -382,5 +382,9 @@
         where order_id = #{orderId,jdbcType=BIGINT}
     </update>
 
+    <select id="findorderByExport" resultType="java.util.Map">
+        select order_id orderId, order_num orderNum, us_id usId,con_id conId,status,pay_status payStatus,amount,trade_num tradeNum,create_date createDate,remark,ali_item aliItem
+        from ali_order
+    </select>
 
 </mapper>
