@@ -5,7 +5,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qf.entity.SysUser;
 import com.qf.entity.SysUserExample;
+import com.qf.entity.User;
+import com.qf.entity.UserExample;
 import com.qf.mapper.SysUserMapper;
+import com.qf.mapper.UserMapper;
 import com.qf.service.SysUsersService;
 import com.qf.utils.*;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -23,11 +26,13 @@ public class SysUsersServiceImpl implements SysUsersService {
     @Resource
     private SysUserMapper sysUserMapper;
 
+    @Resource
+    private UserMapper userMapper;
+
 
     @Override
-    public List<SysUser> findAll() {
-        return sysUserMapper.selectByExample(null);
-
+    public List<User> findAll() {
+        return userMapper.selectByExample(null);
     }
 
     @Override
@@ -58,29 +63,33 @@ public class SysUsersServiceImpl implements SysUsersService {
     public ResultData findByPage(Pager pager, String search, Sorter sorter) {
 
         PageHelper.offsetPage(pager.getOffset(),pager.getLimit());
-        SysUserExample example = new SysUserExample();
+        UserExample example = new UserExample();
 
         if(sorter!=null&&StringUtils.isNotEmpty(sorter.getSort())){
-            example.setOrderByClause("user_id"+sorter.getOrder());
+            example.setOrderByClause("us_id "+sorter.getOrder());
         }
 
-        SysUserExample.Criteria criteria = example.createCriteria();
+        UserExample.Criteria criteria = example.createCriteria();
 
         if(search!=null&&"".equals(search)){
-            criteria.andUsernameLike("%"+search+"%");
+            criteria.andUsNameLike("%"+search+"%");
         }
 
-        List<SysUser> list = sysUserMapper.selectByExample(example);
+        List<User> list = userMapper.selectByExample(example);
 
         PageInfo info = new PageInfo(list);
 
         ResultData data = new ResultData(info.getTotal(),info.getList());
+
+        System.out.println(data.toString());
+
         return data;
+
     }
 
     @Override
-    public R save(SysUser sysUser) {
-        int i = sysUserMapper.insert(sysUser);
+    public R save(User sysUser) {
+        int i = userMapper.insert(sysUser);
         if(i>0){
             return R.ok();
         }
@@ -88,17 +97,17 @@ public class SysUsersServiceImpl implements SysUsersService {
     }
 
     @Override
-    public R delete(List<Long> ids) {
+    public R delete(List<Integer> ids) {
 
-        SysUserExample example = new SysUserExample();
-        SysUserExample.Criteria criteria = example.createCriteria();
-        for (Long id:ids){
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        for (Integer id:ids){
             if (id<2){
                 return R.error("系统菜单，不能删除！请核对");
             }
         }
-        criteria.andUserIdIn(ids);
-        int i = sysUserMapper.deleteByExample(example);
+        criteria.andUsIdIn(ids);
+        int i = userMapper.deleteByExample(example);
         if (i>0){
             return R.ok();
         }

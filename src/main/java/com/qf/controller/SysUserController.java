@@ -3,6 +3,7 @@ package com.qf.controller;
 import com.google.code.kaptcha.Producer;
 import com.qf.dto.SysUserDTO;
 import com.qf.entity.SysUser;
+import com.qf.entity.User;
 import com.qf.log.Mylog;
 import com.qf.service.SysUsersService;
 import com.qf.utils.*;
@@ -35,7 +36,7 @@ public class SysUserController {
 
     @RequestMapping("/findAll")
     @Mylog(value = "查所有",description = "查询")
-    public List<SysUser> findAll(){
+    public List<User> findAll(){
         return sysUsersService.findAll();
     }
 
@@ -90,7 +91,7 @@ public class SysUserController {
     @ApiOperation(value = "新增用户",notes = "新增")
     @RequiresPermissions("sys:user:save")
     @RequestMapping(value = "/sys/user/save",method = RequestMethod.POST)
-    public R saveUser(@RequestBody SysUser sysUser){
+    public R saveUser(@RequestBody User sysUser){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         // new Date()为获取当前系统时间
         Date time = null;
@@ -99,7 +100,7 @@ public class SysUserController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        sysUser.setCreateTime((java.sql.Date) time);
+        sysUser.setUsCreatedate(time);
         System.out.println(time);
         return sysUsersService.save(sysUser);
     }
@@ -108,7 +109,7 @@ public class SysUserController {
     @ApiOperation(value = "删除用户",notes="删除")
     @RequiresPermissions("sys:user:delete")
     @RequestMapping("/sys/user/del")
-    public R del(@RequestBody List<Long>ids){
+    public R del(@RequestBody List<Integer>ids){
         return sysUsersService.delete(ids);
     }
 

@@ -10,7 +10,7 @@ $(function(){
         //idField: 'menuId',
         columns: [
             {
-                field: 'userId',
+                field: 'usId',
                 title: '序号',
                 width: 40,
                 formatter: function(value, row, index) {
@@ -20,15 +20,21 @@ $(function(){
                 }
             },
             {checkbox:true},
-            { title: '用户ID', field: 'userId',sortable:true},
-            {title:'用户名', field:'username'},
-            { title: '密码', field: 'password',formatter:function(value){
+            { title: '用户ID', field: 'usId',sortable:true},
+            {title:'用户名', field:'usName'},
+            { title: '密码', field: 'usPassword',formatter:function(value){
                 return '******';
                 }},
-            { title: '邮箱', field: 'email'},
-            { title: '手机号', field: 'mobile'},
-            { title: '创建人ID', field: 'createUserId'},
-            { title: '创建时间', field: 'createTime'}
+            { title: '邮箱', field: 'usEmail'},
+            { title: '手机号', field: 'usMobile'},
+            { title: '性别', field: 'usSex'},
+            { title: '生日', field: 'usBirthday'},
+            { title: '现居住地', field: 'usNowhome'},
+            { title: '工作', field: 'usJob'},
+            { title: '头像', field: 'usHead'},
+            { title: '粉丝数', field: 'usFanscount'},
+            { title: '菜谱数', field: 'usBookcount'},
+            { title: '创建时间', field: 'usCreatedate'}
         ]};
     $('#table').bootstrapTable(option);
 });
@@ -44,14 +50,14 @@ var vm = new Vue({
     methods:{
 	    exportExcel:function(){
 	        console.log("导出！")
-            location.href="http://10.9.21.131:8080/exportExcel";
+            location.href="http://10.9.21.131:8081/exportExcel";
         },
         del: function(){
             var rows = getSelectedRows();
             if(rows == null){
                 return ;
             }
-            var id = 'userId';
+            var id = 'usId';
             //提示确认框
             layer.confirm('您确定要删除所选数据吗？', {
                 btn: ['确定', '取消'] //可以无限个按钮
@@ -87,13 +93,13 @@ var vm = new Vue({
             vm.getUser();
         },
         update: function (event) {
-            var id = 'userId';
-            var userId = getSelectedRow()[id];
-            if(userId == null){
+            var id = 'usId';
+            var usId = getSelectedRow()[id];
+            if(usId == null){
                 return ;
             }
 
-            $.get("../sys/user/info/"+userId, function(r){
+            $.get("../sys/user/info/"+usId, function(r){
                 vm.showList = false;
                 vm.title = "修改";
                 vm.user = r.user;
@@ -102,7 +108,7 @@ var vm = new Vue({
             });
         },
         saveOrUpdate: function (event) {
-            var url = vm.user.userId == null ? "../sys/user/save" : "../sys/user/update";
+            var url = vm.user.usId == null ? "../sys/user/save" : "../sys/user/update";
             $.ajax({
                 type: "POST",
                 url: url,

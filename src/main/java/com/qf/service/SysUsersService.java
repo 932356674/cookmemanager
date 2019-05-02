@@ -1,6 +1,7 @@
 package com.qf.service;
 
 import com.qf.entity.SysUser;
+import com.qf.entity.User;
 import com.qf.utils.Pager;
 import com.qf.utils.R;
 import com.qf.utils.ResultData;
@@ -11,15 +12,15 @@ import java.util.Map;
 
 public interface SysUsersService {
 
-    public List<SysUser> findAll();
+    public List<User> findAll();
 
     public R login(SysUser sysUser);
 
     public ResultData findByPage(Pager pager, String search, Sorter sorter);
 
-    public R save (SysUser sysUser);
+    public R save (User sysUser);
 
-    public R delete(List<Long> ids);
+    public R delete(List<Integer> ids);
 
     public R findUser(Long userId);
 
@@ -38,4 +39,5 @@ public interface SysUsersService {
     R findBarData();
 
     List<Map<String,Object>>exportExcel();
+
 }

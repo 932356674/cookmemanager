@@ -1,5 +1,7 @@
 package com.qf.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class User {
@@ -77,6 +79,7 @@ public class User {
      *
      * @mbggenerated Tue Apr 09 21:23:38 CST 2019
      */
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date usBirthday;
 
     /**
@@ -125,6 +128,7 @@ public class User {
      *
      * @mbggenerated Tue Apr 09 21:23:38 CST 2019
      */
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date usCreatedate;
 
     /**
@@ -303,6 +307,7 @@ public class User {
      *
      * @mbggenerated Tue Apr 09 21:23:38 CST 2019
      */
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     public Date getUsBirthday() {
         return usBirthday;
     }
@@ -447,6 +452,7 @@ public class User {
      *
      * @mbggenerated Tue Apr 09 21:23:38 CST 2019
      */
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     public Date getUsCreatedate() {
         return usCreatedate;
     }

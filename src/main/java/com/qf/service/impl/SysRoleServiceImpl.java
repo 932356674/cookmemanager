@@ -34,7 +34,7 @@ public class SysRoleServiceImpl implements SysRoleService {
         SysRoleExample example = new SysRoleExample();
 
         if(sorter!=null&&StringUtils.isNotEmpty(sorter.getSort())){
-            example.setOrderByClause("role_id"+sorter.getOrder());
+            example.setOrderByClause("role_id "+sorter.getOrder());
         }
 
         SysRoleExample.Criteria criteria = example.createCriteria();
