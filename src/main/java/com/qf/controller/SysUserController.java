@@ -101,6 +101,9 @@ public class SysUserController {
             e.printStackTrace();
         }
         sysUser.setUsCreatedate(time);
+        String usPassword = sysUser.getUsPassword();
+        Md5Hash newPasswords = new Md5Hash(usPassword,sysUser.getUsMobile()+"",1024);
+        sysUser.setUsPassword(newPasswords.toString());
         System.out.println(time);
         return sysUsersService.save(sysUser);
     }

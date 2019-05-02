@@ -466,4 +466,11 @@ where att.fans_id=#{uid}
   UPDATE USER SET us_head = #{file} WHERE us_id=#{usId}
 </update>
 
+
+  <select id="findUserForExport" resultType="java.util.Map">
+    select us_id,us_name,us_password,us_mobile,us_email,us_message,us_sex,us_birthday,us_nowhome,us_job,us_head,us_fansCount,us_bookCount,us_createdate
+    from user
+  </select>
+
+
 </mapper>

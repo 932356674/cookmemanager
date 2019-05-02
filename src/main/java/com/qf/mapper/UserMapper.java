@@ -6,6 +6,7 @@ import com.qf.entity.UserExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     /**
@@ -104,5 +105,8 @@ public interface UserMapper {
 
     //我的粉丝数量
     Integer selectMyFansCounts(Integer usId);
+
+    //导出user表
+    List<Map<String,Object>> findUserForExport();
 
 }

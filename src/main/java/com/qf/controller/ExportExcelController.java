@@ -35,7 +35,7 @@ public class ExportExcelController {
             List<Map<String,Object>> list = sysUsersService.exportExcel();
             Workbook workbook = new HSSFWorkbook();//空的excel文件
             Sheet sheet = workbook.createSheet("CookMe用户信息");
-            String titles = "usId,usName,usPassword,usMobile,usEmail,usMessage,usSex,usBirthday,usNowhome,usJob,usHead,usFanscount,us_bookCount,us_createdate";
+            String titles = "us_id,us_name,us_password,us_mobile,us_email,us_message,us_sex,us_birthday,us_nowhome,us_job,us_head,us_fansCount,us_bookCount,us_createdate";
             for (int i = 0; i < list.size(); i++) {
                 Row row = sheet.createRow(i);//行
                 String t[] = titles.split(",");

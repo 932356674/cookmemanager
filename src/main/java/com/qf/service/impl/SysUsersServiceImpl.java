@@ -71,7 +71,7 @@ public class SysUsersServiceImpl implements SysUsersService {
 
         UserExample.Criteria criteria = example.createCriteria();
 
-        if(search!=null&&"".equals(search)){
+        if(search!=null){
             criteria.andUsNameLike("%"+search+"%");
         }
 
@@ -213,6 +213,6 @@ public class SysUsersServiceImpl implements SysUsersService {
     @Override
     public List<Map<String, Object>> exportExcel() {
 
-        return sysUserMapper.findUserForExport();
+        return userMapper.findUserForExport();
     }
 }
