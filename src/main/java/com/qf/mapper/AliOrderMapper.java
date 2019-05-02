@@ -5,6 +5,7 @@ import com.qf.entity.AliOrderExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AliOrderMapper {
     /**
@@ -94,4 +95,6 @@ public interface AliOrderMapper {
      * @mbggenerated Fri Apr 19 14:58:20 CST 2019
      */
     int updateByPrimaryKey(AliOrder record);
+
+    List<Map<String, Object>> findorderByExport();
 }

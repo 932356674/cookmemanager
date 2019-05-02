@@ -1,5 +1,6 @@
 package com.qf.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.qf.utils.Constants;
 
 import java.util.Date;
@@ -75,6 +76,7 @@ public class AliOrder {
      *
      * @mbggenerated Fri Apr 19 14:58:20 CST 2019
      */
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
     /**
@@ -293,6 +295,7 @@ public class AliOrder {
      *
      * @mbggenerated Fri Apr 19 14:58:20 CST 2019
      */
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getCreateDate() {
         return createDate;
     }
