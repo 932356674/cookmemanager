@@ -354,13 +354,8 @@
     group by u.dept_id
 </select>
 
-  <select id="findBarData" resultType="java.util.Map">
-    SELECT d.dept_name deptName,
-  SUM(CASE sex WHEN '男' THEN 1 ELSE 0 END) boy,
-  SUM(CASE sex WHEN '女' THEN 1 ELSE 0 END) girl
-  FROM sys_user u,sys_dept d
-  WHERE u.`dept_id` = d.`id`
-  GROUP BY u.`dept_id`
+  <select id="findBarData" resultType="com.qf.entity.Product">
+   SELECT sort,SUM(sales) sales FROM product GROUP BY sort
   </select>
 
   <select id="findUserForExport" resultType="java.util.Map">

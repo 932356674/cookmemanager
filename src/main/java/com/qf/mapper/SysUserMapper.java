@@ -1,5 +1,6 @@
 package com.qf.mapper;
 
+import com.qf.entity.Product;
 import com.qf.entity.SysUser;
 import com.qf.entity.SysUserExample;
 import org.apache.ibatis.annotations.Param;
@@ -104,7 +105,7 @@ public interface SysUserMapper {
     List<Map<String,Object>>findPieData();
 
     //查询每个部门的性别统计
-    List<Map<String,Object>> findBarData();
+    List<Product> findBarData();
 
     //导出user表
     List<Map<String,Object>> findUserForExport();

@@ -34,10 +34,12 @@ public interface SysUsersService {
 
     int unLockAccount(SysUser user);
 
-    R findPieData();
+//    R findPieData();
 
     R findBarData();
 
     List<Map<String,Object>>exportExcel();
+
+
 
 }

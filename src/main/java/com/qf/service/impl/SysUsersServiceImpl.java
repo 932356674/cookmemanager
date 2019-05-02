@@ -3,10 +3,7 @@ package com.qf.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.qf.entity.SysUser;
-import com.qf.entity.SysUserExample;
-import com.qf.entity.User;
-import com.qf.entity.UserExample;
+import com.qf.entity.*;
 import com.qf.mapper.SysUserMapper;
 import com.qf.mapper.UserMapper;
 import com.qf.service.SysUsersService;
@@ -174,40 +171,40 @@ public class SysUsersServiceImpl implements SysUsersService {
         return sysUserMapper.unLockAccount(user);
     }
 
-    @Override
-    public R findPieData() {
-
-        List<Map<String, Object>> pieData = sysUserMapper.findPieData();
-
-        List list = new ArrayList();
-
-        for (Map<String, Object> map : pieData) {
-
-            String name = map.get("name")+"";
-            list.add(name);
-        }
-        return R.ok().put("pieData",pieData).put("legendData",list);
-    }
+//    @Override
+//    public R findPieData() {
+//
+//        List<Map<String, Object>> pieData = sysUserMapper.findPieData();
+//
+//        List list = new ArrayList();
+//
+//        for (Map<String, Object> map : pieData) {
+//
+//            String name = map.get("name")+"";
+//            list.add(name);
+//        }
+//        return R.ok().put("pieData",pieData).put("legendData",list);
+//    }
 
     @Override
     public R findBarData() {
 
-        List<Map<String,Object>>list =sysUserMapper.findBarData();
+        List<Product> list = sysUserMapper.findBarData();
 
-        List yAxisData = new ArrayList();//y坐标
-        List series0Data = new ArrayList();//男
-        List series1Data = new ArrayList();//女
+        List xAxisData = new ArrayList();//x坐标
+        List series0Data = new ArrayList();//
 
-        for (Map<String, Object> map : list) {
-            String deptName = map.get("deptName")+"";
-            Object boy = map.get("boy");
-            Object girl = map.get("girl");
-            yAxisData.add(deptName);
-            series0Data.add(boy);
-            series1Data.add(girl);
+        for (Product map : list) {
+            Long sales = map.getSales();
+            Object sort = map.getSort();
+            xAxisData.add(sort);
+            series0Data.add(sales);
+            System.out.println(sales);
+            System.out.println(sort);
+
         }
 
-        return R.ok().put("yAxisData",yAxisData).put("series0Data",series0Data).put("series1Data",series1Data);
+        return R.ok().put("xAxisData",xAxisData).put("series0Data",series0Data);
     }
 
     @Override

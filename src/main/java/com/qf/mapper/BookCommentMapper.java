@@ -1,10 +1,13 @@
 package com.qf.mapper;
 
+import com.qf.dto.BookCommentAll;
 import com.qf.entity.BookComment;
 import com.qf.entity.BookCommentExample;
+import com.qf.utils.Pager;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookCommentMapper {
     /**
@@ -94,4 +97,8 @@ public interface BookCommentMapper {
      * @mbggenerated Tue Apr 09 21:38:01 CST 2019
      */
     int updateByPrimaryKey(BookComment record);
+
+    List<BookCommentAll> selectBookComment();
+
+    List<Map<String,Object>> findUserForExport();
 }
