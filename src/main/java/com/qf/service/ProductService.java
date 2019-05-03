@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    public ResultData findProduct(Pager pager);
+    public ResultData findProduct(Pager pager,String search);
 
     public R insertProduct(Product product);
 

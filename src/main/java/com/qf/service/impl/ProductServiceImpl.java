@@ -22,9 +22,14 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public ResultData findProduct(Pager pager) {
+    public ResultData findProduct(Pager pager,String search) {
         PageHelper.offsetPage(pager.getOffset(),pager.getLimit());
-        List<Product> list=productMapper.selectByExample(null);
+        ProductExample example=new ProductExample();
+        ProductExample.Criteria criteria=example.createCriteria();
+        if (search!=null&&!search.equals("")){
+            criteria.andProductNameLike("%"+search+"%");
+        }
+        List<Product> list=productMapper.selectByExample(example);
         PageInfo info=new PageInfo(list);
         ResultData data=new ResultData(info.getTotal(),info.getList());
         return data;

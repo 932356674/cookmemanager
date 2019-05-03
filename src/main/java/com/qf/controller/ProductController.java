@@ -20,8 +20,8 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/product/list")
-    public ResultData findProduct(Pager pager){
-        return productService.findProduct(pager);
+    public ResultData findProduct(Pager pager,String search){
+        return productService.findProduct(pager,search);
     }
 
     @RequestMapping("/product/save")
@@ -31,8 +31,6 @@ public class ProductController {
 
     @RequestMapping("/product/info/{productId}")
     public R findProduct(@PathVariable int productId){
-        System.out.println("************************************************************************");
-
         return productService.findProduct(productId);
     }
 
