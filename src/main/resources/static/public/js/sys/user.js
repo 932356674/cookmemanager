@@ -31,7 +31,6 @@ $(function(){
             { title: '生日', field: 'usBirthday'},
             { title: '现居住地', field: 'usNowhome'},
             { title: '工作', field: 'usJob'},
-            { title: '头像', field: 'usHead'},
             { title: '粉丝数', field: 'usFanscount'},
             { title: '菜谱数', field: 'usBookcount'},
             { title: '创建时间', field: 'usCreatedate'}

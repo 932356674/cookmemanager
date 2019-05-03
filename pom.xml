@@ -12,6 +12,7 @@
     <artifactId>cookmemanager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cookmemanager</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -215,6 +216,10 @@ pagerhelper 的 springboot 配置方式
                     <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
                     <overwrite>true</overwrite>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
