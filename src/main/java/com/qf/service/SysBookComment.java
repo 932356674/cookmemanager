@@ -15,4 +15,7 @@ public interface SysBookComment {
     public R del(List<Integer> ids);
 
     List<Map<String,Object>> exportExcel();
+
+
+
 }

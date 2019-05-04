@@ -101,4 +101,6 @@ public interface BookCommentMapper {
     List<BookCommentAll> selectBookComment();
 
     List<Map<String,Object>> findUserForExport();
+
+    int deleteById(int commentId);
 }

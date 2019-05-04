@@ -40,20 +40,12 @@ public class SysBookCommentImpl implements SysBookComment {
 
         BookCommentExample.Criteria criteria = example.createCriteria();
 
-//        for (int id : ids){
-//            if (id<2){
-//                return R.error("最热评论,不能删除");
-//            }
-//        }
-
         criteria.andBookIdIn(ids);
-        System.out.println("--------------####"+ids);
 
-        int i = bookCommentMapper.deleteByExample(example);
-        if (i>0){
-            return R.ok();
+        for (Integer id : ids) {
+            int i = bookCommentMapper.deleteById(id);
         }
-        return R.error("删除失败");
+        return R.ok();
     }
 
     @Override

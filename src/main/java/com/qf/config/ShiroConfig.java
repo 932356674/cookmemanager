@@ -89,6 +89,7 @@ public class ShiroConfig {
         //map.put("/json/**","anon");//假数据
         map.put("/captcha.jpg","anon");//验证码
         map.put("/sys/login","anon");
+        map.put("/druid/**","anon");
        // map.put("/sys/menu/*","perms[\"sys:menu\"]");
         map.put("/**","user");//选中记住我能访问的资源
         map.put("/**","authc");//登录后才能访问

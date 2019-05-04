@@ -16,7 +16,7 @@ import javax.servlet.annotation.WebServlet;
 initParams = {
         @WebInitParam(name = "loginUsername",value="aaa"),
         @WebInitParam(name = "loginPassword",value="aaa"),
-        @WebInitParam(name = "allow",value = "127.0.0.1")
+//        @WebInitParam(name = "allow",value = "127.0.0.1")
 })
 public class DruidStatViewServlet extends StatViewServlet {
 }

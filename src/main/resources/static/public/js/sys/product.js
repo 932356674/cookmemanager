@@ -23,6 +23,10 @@ $(function(){
             { title: '商品编号', field: 'productId'},
             { title: '商品名称', field: 'productName'},
             { title: '商品别名', field: 'alias'},
+            { title: '图片',field:'productImages',width:'15%',
+                formatter:function (value, row, index) {
+                    return "<img style='width:50px;height:50px;' src='http://39.106.68.255:80/"+value+"' alt=''>"
+                }},
             { title: '商品价格', field: 'price'},
             { title: '计量单位', field: 'unit'},
             { title: '商品种类', field: 'sort'},

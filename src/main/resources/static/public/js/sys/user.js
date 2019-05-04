@@ -31,6 +31,10 @@ $(function(){
             { title: '生日', field: 'usBirthday'},
             { title: '现居住地', field: 'usNowhome'},
             { title: '工作', field: 'usJob'},
+            { title: '头像',field:'usHead',width:'15%',
+                formatter:function (value, row, index) {
+                    return "<img style='width:50px;height:50px;' src='http://39.106.68.255:80/"+value+"' alt=''>"
+                }},
             { title: '粉丝数', field: 'usFanscount'},
             { title: '菜谱数', field: 'usBookcount'},
             { title: '创建时间', field: 'usCreatedate'}
