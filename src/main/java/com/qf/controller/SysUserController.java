@@ -104,6 +104,7 @@ public class SysUserController {
         String usPassword = sysUser.getUsPassword();
         Md5Hash newPasswords = new Md5Hash(usPassword,sysUser.getUsMobile()+"",1024);
         sysUser.setUsPassword(newPasswords.toString());
+        sysUser.setUsHead("group1/M00/00/03/rBE1hVzNhRiAGAxkAAILvfMpz_8563.jpg");
         System.out.println(time);
         return sysUsersService.save(sysUser);
     }

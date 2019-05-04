@@ -18,7 +18,7 @@ public class KaptchaConfig {
         Properties properties = new Properties();
         properties.setProperty(Constants.KAPTCHA_BORDER,"no");
         //验证码数量
-        properties.setProperty(Constants.KAPTCHA_TEXTPRODUCER_CHAR_LENGTH,"1");
+        properties.setProperty(Constants.KAPTCHA_TEXTPRODUCER_CHAR_LENGTH,"4");
         properties.setProperty(Constants.KAPTCHA_TEXTPRODUCER_FONT_COLOR,"green");
         Config config = new Config(properties);
         producer.setConfig(config);

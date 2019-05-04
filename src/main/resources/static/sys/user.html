@@ -20,9 +20,9 @@
             <button v-if="hasPermission('sys:user:save')"  class="btn btn-success " type="button" @click="add">
                 <i class="fa fa-plus"></i>&nbsp;&nbsp;<span class="bold">新增</span>
             </button>
-            <button v-if="hasPermission('sys:user:update')" class="btn btn-success " type="button" @click="update">
-                <i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<span class="bold">修改</span>
-            </button>
+            <!--<button v-if="hasPermission('sys:user:update')" class="btn btn-success " type="button" @click="update">-->
+                <!--<i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<span class="bold">修改</span>-->
+            <!--</button>-->
             <button v-if="hasPermission('sys:user:delete')" class="btn btn-danger " type="button" @click="del">
                 <i class="fa fa-remove"></i>&nbsp;&nbsp;<span class="bold">删除</span>
             </button>
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">生日</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="user.usBirthday" placeholder="生日"/>
+                    <input type="date" class="form-control" v-model="user.usBirthday" placeholder="生日"/>
                 </div>
             </div>
             <div class="form-group">
@@ -85,12 +85,12 @@
                     <input type="text" class="form-control" v-model="user.usJob" placeholder="工作"/>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">头像</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="user.usHead" placeholder="头像"/>
-                </div>
-            </div>
+            <!--<div class="form-group">-->
+                <!--<div class="col-sm-2 control-label">头像</div>-->
+                <!--<div class="col-sm-4">-->
+                    <!--<input type="file" class="form-control" v-model="user.usHead" placeholder="头像"/>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="form-group">
                 <div class="col-sm-2 control-label">粉丝数</div>
                 <div class="col-sm-10">
@@ -101,12 +101,6 @@
                 <div class="col-sm-2 control-label">菜谱数</div>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" v-model="user.usBookcount" placeholder="菜谱数"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">创建人ID</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="user.usCreatedate" placeholder="创建人ID"/>
                 </div>
             </div>
             <div class="form-group">
